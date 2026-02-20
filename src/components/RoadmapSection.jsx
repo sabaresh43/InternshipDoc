@@ -252,26 +252,27 @@ export default function RoadmapSection() {
           </p>
         </motion.div>
 
-        <div style={{ maxWidth: 800 }}>
-          {phases.map((phase, i) => (
-            <PhaseCard key={phase.months} phase={phase} index={i} inView={inView} />
-          ))}
+        <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+          <div style={{ flex: 1, maxWidth: 800 }}>
+            {phases.map((phase, i) => (
+              <PhaseCard key={phase.months} phase={phase} index={i} inView={inView} />
+            ))}
+          </div>
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={inView ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
             style={{
-              marginTop: 32,
+              width: 300,
               padding: '28px 32px',
               background: 'linear-gradient(135deg, rgba(0,200,255,0.05), rgba(124,58,237,0.05))',
               border: '1px solid rgba(0,200,255,0.18)',
               borderRadius: 16,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: 16,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              height: 'fit-content',
             }}
           >
             <div>
@@ -282,7 +283,17 @@ export default function RoadmapSection() {
                 Each phase has a detailed technical deep-dive — what gets built, what skills develop, and what tools you'll actually use.
               </p>
             </div>
-            <Link to="/program" className="btn btn-outline" style={{ whiteSpace: 'nowrap', fontSize: 14 }}>
+            <Link to="/program" className="btn" style={{ 
+              whiteSpace: 'nowrap', 
+              fontSize: 14, 
+              marginTop: 16,
+              background: 'linear-gradient(135deg, #00c8ff, #7c3aed)',
+              color: 'white',
+              border: 'none',
+              boxShadow: '0 4px 15px rgba(0,200,255,0.3)',
+              transition: 'all 0.3s ease',
+              fontWeight: 600,
+            }}>
               View Full Technical Roadmap <ArrowRight size={15} />
             </Link>
           </motion.div>
